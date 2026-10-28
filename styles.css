@@ -754,8 +754,10 @@ footer {
   z-index:5;
   right:22px;
   bottom:22px;
-  display:grid;
-  place-items:center;
+  display:flex;
+  flex-direction:row-reverse;
+  align-items:center;
+  justify-content:flex-start;
   width:54px;
   height:54px;
   border-radius:50%;
@@ -917,8 +919,6 @@ footer {
   z-index:5;
   right:22px;
   bottom:22px;
-  display:grid;
-  place-items:center;
   width:54px;
   height:54px;
   border-radius:50%;
@@ -1083,8 +1083,8 @@ footer {
   z-index:5;
   right:22px;
   bottom:22px;
-  display:grid;
-  place-items:center;
+  position:fixed;
+  display:block;
   width:54px;
   height:54px;
   border-radius:50%;
@@ -1093,41 +1093,142 @@ footer {
   border:1px solid rgba(255,255,255,.25);
   box-shadow:0 5px 14px rgba(7,22,36,.22);
   font-size:1.4rem;
-  transition:transform .25s ease,background-color .25s ease,box-shadow .25s ease
+  overflow:visible;
+  transition:width .42s cubic-bezier(.22,.61,.36,1),border-radius .3s ease,transform .25s ease,background-color .25s ease,box-shadow .25s ease
 }
-.whatsapp svg {
+.whatsapp-icon {
+  position:absolute;
+  top:1px;
+  right:0;
+  z-index:1;
+  display:grid;
+  flex:none;
+  place-items:center;
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  background:#19b968
+}
+.whatsapp-icon:before {
+  position:absolute;
+  z-index:-1;
+  inset:-1px;
+  border:1px solid rgba(25,185,104,.45);
+  border-radius:50%;
+  content:"";
+  opacity:0
+}
+.whatsapp-icon svg {
   width:28px;
   height:28px;
   fill:currentColor;
   transition:transform .25s ease
 }
-.whatsapp:hover {
-  background:#16a85d;
-  box-shadow:0 7px 16px rgba(25,185,104,.28);
-  transform:scale(1.04)
+.whatsapp-label {
+  position:absolute;
+  inset:1px 24px 1px 0;
+  display:flex;
+  align-items:center;
+  box-sizing:border-box;
+  overflow:hidden;
+  color:var(--white);
+  font-size:.72rem;
+  font-weight:700;
+  line-height:1;
+  opacity:0;
+  padding:0;
+  border-radius:12px 0 0 12px;
+  background:transparent;
+  white-space:nowrap;
+  transform:translateX(14px);
+  transition:opacity .3s ease,transform .36s cubic-bezier(.22,.61,.36,1),padding .3s ease,background-color .3s ease,box-shadow .3s ease
 }
-.whatsapp:hover svg {
-  transform:rotate(-5deg) translateY(-1px)
+.whatsapp:hover {
+  width:244px;
+  border-radius:12px;
+  border-color:#16a85d;
+  background:#16a85d;
+  box-shadow:0 9px 20px rgba(25,185,104,.28);
+  transform:translateY(-3px)
+}
+.whatsapp:hover .whatsapp-label {
+  padding:0 46px 0 16px;
+  background:#16a85d;
+  box-shadow:none;
+  transform:translateX(0);
+  opacity:1
+}
+.whatsapp:hover .whatsapp-icon {
+  background:#16a85d;
+  box-shadow:none
+}
+.whatsapp:hover .whatsapp-icon svg {
+  animation:whatsapp-bounce .55s ease
+}
+.whatsapp:hover .whatsapp-icon:before {
+  animation:whatsapp-ripple .8s ease-out
+}
+@keyframes whatsapp-bounce {
+  0%,100% { transform:rotate(0) translateY(0) }
+  35% { transform:rotate(-8deg) translateY(-3px) }
+  65% { transform:rotate(5deg) translateY(1px) }
+}
+@keyframes whatsapp-ripple {
+  0% { opacity:.5; transform:scale(1) }
+  100% { opacity:0; transform:scale(1.55) }
 }
 .whatsapp:active {
-  transform:scale(.98)
-}
-.whatsapp:active svg {
-  transform:rotate(0) translateY(1px)
+  transform:translateY(-1px) scale(.98)
 }
 .whatsapp:focus-visible {
   outline:3px solid var(--orange);
   outline-offset:4px
 }
 @media(prefers-reduced-motion:reduce) {
-  .whatsapp,.whatsapp svg {
+  .whatsapp {
+    transition:width .42s ease,border-radius .3s ease,background-color .25s ease
+  }
+  .whatsapp-label {
+    transition:opacity .3s ease,padding .3s ease,background-color .25s ease
+  }
+  .whatsapp-icon svg {
     transition:none
   }
-  .whatsapp:hover,.whatsapp:active {
+  .whatsapp:hover {
+    width:244px;
+    border-radius:12px;
+    border-color:#16a85d;
+    background:#16a85d;
     transform:none
   }
-  .whatsapp:hover svg,.whatsapp:active svg {
+  .whatsapp:hover .whatsapp-label {
+    padding:0 46px 0 16px;
+    background:#16a85d;
+    box-shadow:none;
+    transform:none;
+    opacity:1
+  }
+  .whatsapp:hover .whatsapp-icon svg,.whatsapp:active,.whatsapp:active .whatsapp-icon svg {
     transform:none
+  }
+  .whatsapp:hover .whatsapp-icon svg {
+    animation:none
+  }
+  .whatsapp:hover .whatsapp-icon:before {
+    animation:none
+  }
+}
+@media(hover:none) {
+  .whatsapp:hover {
+    width:54px;
+    border-radius:50%;
+    border-color:rgba(255,255,255,.25);
+    background:#19b968;
+    transform:none
+  }
+  .whatsapp:hover .whatsapp-label {
+    padding:0;
+    opacity:0
   }
 }
 .record-intro {
