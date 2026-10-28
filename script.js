@@ -26,6 +26,9 @@ const recordType = document.getElementById("recordType");
 const recordRows = [...document.querySelectorAll("#recordTableBody tr")];
 const recordCount = document.getElementById("recordCount");
 const recordEmpty = document.getElementById("recordEmpty");
+const recordTableWrap = document.querySelector(".record-table-wrap");
+const recordMore = document.getElementById("recordMore");
+let recordsExpanded = false;
 
 function normalizeText(value) {
   return value
@@ -35,6 +38,12 @@ function normalizeText(value) {
 }
 
 function filterRecords() {
+  if (!recordsExpanded) {
+    recordsExpanded = true;
+    recordTableWrap.classList.remove("record-table-compact");
+    recordMore.setAttribute("aria-expanded", "true");
+    updateRecordButton();
+  }
   const query = normalizeText(recordSearch.value.trim());
   const type = recordType.value;
   let visibleCount = 0;
@@ -51,6 +60,39 @@ function filterRecords() {
   recordEmpty.hidden = visibleCount !== 0;
 }
 
+function updateRecordButton() {
+  recordMore.setAttribute("aria-expanded", String(recordsExpanded));
+  recordMore.innerHTML = recordsExpanded
+    ? 'Mostrar primeras 5 obras <span>↑</span>'
+    : 'Ver todas las obras <span>↓</span>';
+}
+
+function resetRecords() {
+  recordsExpanded = false;
+  recordSearch.value = "";
+  recordType.value = "all";
+  recordTableWrap.classList.add("record-table-compact");
+  recordRows.forEach((row, index) => {
+    row.hidden = index >= 5;
+  });
+  recordCount.textContent = "5";
+  recordEmpty.hidden = true;
+  updateRecordButton();
+}
+
+function toggleRecords() {
+  if (recordsExpanded) {
+    resetRecords();
+    return;
+  }
+
+  recordsExpanded = true;
+  recordTableWrap.classList.remove("record-table-compact");
+  filterRecords();
+  updateRecordButton();
+}
+
+recordMore.addEventListener("click", toggleRecords);
 recordSearch.addEventListener("input", filterRecords);
 recordType.addEventListener("change", filterRecords);
 
