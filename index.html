@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Construcciones y Transportes JMC S.A.S. Soluciones para obras civiles, estructuras, infraestructura y proyectos arquitectónicos en Colombia.">
   <meta name="theme-color" content="#10263d">
+  <meta name="robots" content="index, follow">
   <meta property="og:title" content="JMC S.A.S. | Construimos infraestructura. Impulsamos proyectos.">
   <meta property="og:description" content="Obras civiles, estructuras e infraestructura con compromiso técnico, calidad y cumplimiento.">
   <meta property="og:type" content="website">
@@ -272,9 +273,10 @@
     <span class="whatsapp-label">¡Hablemos de tu proyecto!</span>
   </a>
 
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Vista ampliada" hidden>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle" tabindex="-1" hidden>
     <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Cerrar imagen">×</button>
-    <img id="lightboxImage" src="" alt="">
+    <span class="sr-only" id="lightboxTitle">Vista ampliada de la imagen</span>
+    <img id="lightboxImage" src="" alt="" decoding="async">
   </div>
   <script src="script.js"></script>
 </body>

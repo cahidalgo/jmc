@@ -4,26 +4,35 @@ const navLinks = document.getElementById("navLinks");
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightboxImage");
 const lightboxClose = document.getElementById("lightboxClose");
+let lastFocusedElement;
 
-window.addEventListener("scroll", () => {
+function updateHeader() {
   header.classList.toggle("scrolled", window.scrollY > 24);
-});
+}
+
+updateHeader();
+window.addEventListener("scroll", updateHeader, { passive: true });
 
 menuToggle.addEventListener("click", () => {
   const open = navLinks.classList.toggle("open");
   menuToggle.setAttribute("aria-expanded", String(open));
+  menuToggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
 });
 
 navLinks.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", () => {
     navLinks.classList.remove("open");
     menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Abrir menú");
   });
 });
 
 const recordSearch = document.getElementById("recordSearch");
 const recordType = document.getElementById("recordType");
-const recordRows = [...document.querySelectorAll("#recordTableBody tr")];
+const recordRows = [...document.querySelectorAll("#recordTableBody tr")].map((row) => ({
+  element: row,
+  searchText: normalizeText(row.textContent)
+}));
 const recordCount = document.getElementById("recordCount");
 const recordEmpty = document.getElementById("recordEmpty");
 const recordTableWrap = document.querySelector(".record-table-wrap");
@@ -48,11 +57,11 @@ function filterRecords() {
   const type = recordType.value;
   let visibleCount = 0;
 
-  recordRows.forEach((row) => {
-    const matchesQuery = !query || normalizeText(row.textContent).includes(query);
-    const matchesType = type === "all" || row.dataset.type === type;
+  recordRows.forEach(({ element, searchText }) => {
+    const matchesQuery = !query || searchText.includes(query);
+    const matchesType = type === "all" || element.dataset.type === type;
     const visible = matchesQuery && matchesType;
-    row.hidden = !visible;
+    element.hidden = !visible;
     if (visible) visibleCount += 1;
   });
 
@@ -72,8 +81,8 @@ function resetRecords() {
   recordSearch.value = "";
   recordType.value = "all";
   recordTableWrap.classList.add("record-table-compact");
-  recordRows.forEach((row, index) => {
-    row.hidden = index >= 5;
+  recordRows.forEach(({ element }, index) => {
+    element.hidden = index >= 5;
   });
   recordCount.textContent = "5";
   recordEmpty.hidden = true;
@@ -100,14 +109,20 @@ function closeLightbox() {
   lightbox.hidden = true;
   lightboxImage.src = "";
   document.body.classList.remove("lightbox-open");
+  if (lastFocusedElement) {
+    lastFocusedElement.focus();
+    lastFocusedElement = null;
+  }
 }
 
 document.querySelectorAll(".gallery-item").forEach((item) => {
   item.addEventListener("click", () => {
+    lastFocusedElement = document.activeElement;
     lightboxImage.src = item.dataset.image;
     lightboxImage.alt = item.dataset.alt;
     lightbox.hidden = false;
     document.body.classList.add("lightbox-open");
+    lightboxClose.focus();
   });
 });
 
@@ -117,6 +132,16 @@ lightbox.addEventListener("click", (event) => {
 });
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && !lightbox.hidden) closeLightbox();
+});
+
+document.addEventListener("click", (event) => {
+  if (navLinks.classList.contains("open")
+    && !navLinks.contains(event.target)
+    && !menuToggle.contains(event.target)) {
+    navLinks.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Abrir menú");
+  }
 });
 
 document.getElementById("contactForm").addEventListener("submit", (event) => {
