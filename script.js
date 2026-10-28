@@ -99,7 +99,7 @@ recordType.addEventListener("change", filterRecords);
 function closeLightbox() {
   lightbox.hidden = true;
   lightboxImage.src = "";
-  document.body.style.overflow = "";
+  document.body.classList.remove("lightbox-open");
 }
 
 document.querySelectorAll(".gallery-item").forEach((item) => {
@@ -107,7 +107,7 @@ document.querySelectorAll(".gallery-item").forEach((item) => {
     lightboxImage.src = item.dataset.image;
     lightboxImage.alt = item.dataset.alt;
     lightbox.hidden = false;
-    document.body.style.overflow = "hidden";
+    document.body.classList.add("lightbox-open");
   });
 });
 

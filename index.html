@@ -20,12 +20,12 @@
       <a class="brand" href="#inicio" aria-label="JMC inicio">
         <img class="brand-logo" src="assets/logo-jmc.png" alt="Construcciones y Transportes JMC S.A.S.">
       </a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-controls="navLinks" aria-expanded="false">☰</button>
       <nav class="nav-links" id="navLinks">
         <a href="#nosotros">Nosotros</a>
         <a href="#servicios">Servicios</a>
         <a href="#proyectos">Proyectos</a>
-        <a href="#record-obras">Récord de obras</a>x
+        <a href="#record-obras">Récord de obras</a>
         <a href="#galeria">Galería</a>
         <a href="#contacto">Contacto</a>
         <a class="btn btn-primary" href="#contacto">Solicitar cotización</a>
@@ -49,15 +49,33 @@
 
     <section class="stats">
       <div class="container stats-grid">
-        <div class="stat"><strong>Capacidad técnica</strong><span>Atención a proyectos de pequeña, mediana y gran escala.</span></div>
-        <div class="stat"><strong>Enfoque a la medida</strong><span>Entendemos las necesidades específicas de cada proyecto.</span></div>
-        <div class="stat"><strong>Comunicación directa</strong><span>Un equipo disponible para conversar sobre su próxima obra.</span></div>
+        <article class="stat stat-primary">
+          <div class="stat-head"><span class="stat-number">01</span><span class="stat-label">Base técnica</span></div>
+          <div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M12 38V19l12-9 12 9v19M8 38h32M18 38V27h12v11M16 19h16M18 15h12"/></svg></div>
+          <strong>Capacidad técnica</strong>
+          <span>Atención a proyectos de pequeña, mediana y gran escala, con una mirada práctica y orientada a la ejecución.</span>
+          <div class="stat-detail">Obras civiles <i></i> Estructuras</div>
+        </article>
+        <article class="stat stat-light">
+          <div class="stat-head"><span class="stat-number">02</span><span class="stat-label">Lectura del proyecto</span></div>
+          <div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="13"/><circle cx="24" cy="24" r="5"/><path d="M24 5v6M24 37v6M5 24h6M37 24h6M10.6 10.6l4.2 4.2M33.2 33.2l4.2 4.2"/></svg></div>
+          <strong>Enfoque a la medida</strong>
+          <span>Entendemos las necesidades específicas de cada proyecto para orientar cada decisión con precisión.</span>
+          <div class="stat-detail">Alcance <i></i> Planeación</div>
+        </article>
+        <article class="stat stat-accent">
+          <div class="stat-head"><span class="stat-number">03</span><span class="stat-label">Canal abierto</span></div>
+          <div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M9 12h30v21H22l-8 7v-7H9zM16 21h16M16 27h10"/></svg></div>
+          <strong>Comunicación directa</strong>
+          <span>Un equipo disponible para conversar sobre su próxima obra y avanzar con claridad desde el primer contacto.</span>
+          <div class="stat-detail">Respuesta clara <i></i> Seguimiento</div>
+        </article>
       </div>
     </section>
 
     <section class="section" id="nosotros">
       <div class="container split">
-        <div class="image-frame"><img src="assets/galeria/galeria-1.jpg" alt="Obra de infraestructura en ejecución"></div>
+        <div class="image-frame"><img src="assets/galeria/galeria-1.jpg" alt="Obra de infraestructura en ejecución" loading="lazy" decoding="async"></div>
         <div>
           <div class="eyebrow">01 / La empresa</div>
           <h2>Seriedad para construir lo que sigue.</h2>
@@ -86,18 +104,18 @@
       <div class="container">
         <div class="section-heading"><div><div class="eyebrow">03 / Experiencia documentada</div><h2>Proyectos que hablan de capacidad.</h2></div><p class="intro">Una selección de experiencias registradas en el portafolio de JMC.</p></div>
         <div class="project-grid">
-          <article class="project-card"><img src="assets/proyectos/metrolinea.png" alt="Proyecto Metrolínea"><div class="project-info"><small>Infraestructura</small><h3>Metrolínea</h3></div></article>
-          <article class="project-card"><img src="assets/proyectos/conexion-20.jpg" alt="Proyecto Conexión 20"><div class="project-info"><small>Obra civil</small><h3>Conexión 20</h3></div></article>
-          <article class="project-card"><img src="assets/proyectos/parque-juan-amarillo.jpg" alt="Proyecto Parque Juan Amarillo"><div class="project-info"><small>Espacio público</small><h3>Parque Juan Amarillo</h3></div></article>
-          <article class="project-card"><img src="assets/proyectos/mega-colegio-pablo-vi.png" alt="Proyecto Mega Colegio Pablo VI"><div class="project-info"><small>Obra institucional</small><h3>Mega Colegio Pablo VI</h3></div></article>
-          <article class="project-card"><img src="assets/proyectos/calima-la-14.png" alt="Proyecto Calima La 14"><div class="project-info"><small>Infraestructura urbana</small><h3>Calima La 14</h3></div></article>
-          <article class="project-card"><img src="assets/proyectos/puente-boyaca-suba.png" alt="Proyecto Puente Boyacá Suba"><div class="project-info"><small>Puentes</small><h3>Puente Boyacá Suba</h3></div></article>
-          <article class="project-card"><img src="assets/proyectos/protumaco.jpg" alt="Proyecto ProTumaco"><div class="project-info"><small>Construcción</small><h3>ProTumaco</h3></div></article>
+          <article class="project-card"><img src="assets/proyectos/metrolinea.png" alt="Proyecto Metrolínea" loading="lazy" decoding="async"><div class="project-info"><small>Infraestructura</small><h3>Metrolínea</h3></div></article>
+          <article class="project-card"><img src="assets/proyectos/conexion-20.jpg" alt="Proyecto Conexión 20" loading="lazy" decoding="async"><div class="project-info"><small>Obra civil</small><h3>Conexión 20</h3></div></article>
+          <article class="project-card"><img src="assets/proyectos/parque-juan-amarillo.jpg" alt="Proyecto Parque Juan Amarillo" loading="lazy" decoding="async"><div class="project-info"><small>Espacio público</small><h3>Parque Juan Amarillo</h3></div></article>
+          <article class="project-card"><img src="assets/proyectos/mega-colegio-pablo-vi.png" alt="Proyecto Mega Colegio Pablo VI" loading="lazy" decoding="async"><div class="project-info"><small>Obra institucional</small><h3>Mega Colegio Pablo VI</h3></div></article>
+          <article class="project-card"><img src="assets/proyectos/calima-la-14.png" alt="Proyecto Calima La 14" loading="lazy" decoding="async"><div class="project-info"><small>Infraestructura urbana</small><h3>Calima La 14</h3></div></article>
+          <article class="project-card"><img src="assets/proyectos/puente-boyaca-suba.png" alt="Proyecto Puente Boyacá Suba" loading="lazy" decoding="async"><div class="project-info"><small>Puentes</small><h3>Puente Boyacá Suba</h3></div></article>
+          <article class="project-card"><img src="assets/proyectos/protumaco.jpg" alt="Proyecto ProTumaco" loading="lazy" decoding="async"><div class="project-info"><small>Construcción</small><h3>ProTumaco</h3></div></article>
         </div>
         <div class="record-intro" id="record-obras">
           <div>
             <div class="eyebrow">03.1 / Trayectoria profesional</div>
-            <h3>Experiencia y Récord de Obras</h3>
+            <h3>Registro de trayectoria de obras</h3>
           </div>
           <p>Este registro reúne obras ejecutadas por <strong>Jonás Antonio Hidalgo Arcos</strong>, actual representante legal de JMC S.A.S., como parte de su trayectoria y experiencia profesional. La información no implica que todos los proyectos hayan sido contratados o ejecutados directamente por JMC S.A.S.</p>
         </div>
@@ -120,9 +138,9 @@
         <div class="record-summary" aria-live="polite"><strong id="recordCount">5</strong> obras visibles · 27 en el registro</div>
         <div class="record-table-wrap record-table-compact">
           <table class="record-table">
-            <caption class="sr-only">Experiencia y récord histórico de obras</caption>
+            <caption class="sr-only">Registro histórico de obras y proyectos ejecutados</caption>
             <thead>
-              <tr><th scope="col">#</th><th scope="col">Proyecto</th><th scope="col">Empresa contratante o consorcio</th><th scope="col">Tipo</th><th scope="col">Fecha</th></tr>
+              <tr><th scope="col">N.º</th><th scope="col">Obra o proyecto</th><th scope="col">Cliente o entidad contratante</th><th scope="col">Categoría</th><th scope="col">Fecha de ejecución</th></tr>
             </thead>
             <tbody id="recordTableBody">
               <tr data-type="infraestructura" data-search="metrolinea"><td data-label="#">01</td><td data-label="Proyecto">Metrolínea 1</td><td data-label="Empresa">Metro</td><td data-label="Tipo">Infraestructura</td><td data-label="Fecha">No documentada</td></tr>
@@ -180,7 +198,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section methodology-section">
       <div class="container">
         <div class="section-heading"><div><div class="eyebrow">05 / Metodología de trabajo</div><h2>Precisión en cada etapa de la obra.</h2></div><p class="intro">Un proceso técnico para ordenar decisiones, coordinar recursos y entregar resultados con claridad.</p></div>
         <div class="process">
@@ -252,7 +270,7 @@
   </a>
 
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Vista ampliada" hidden>
-    <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar imagen">×</button>
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Cerrar imagen">×</button>
     <img id="lightboxImage" src="" alt="">
   </div>
   <script src="script.js"></script>

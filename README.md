@@ -34,6 +34,7 @@ La página presenta la empresa, sus especialidades, proyectos documentados, réc
 - Botón flotante de contacto por WhatsApp.
 - Metadatos básicos para SEO y redes sociales Open Graph.
 - Encabezados de seguridad configurados para Netlify.
+- Política CSP configurada en `netlify.toml` para limitar scripts, estilos, fuentes, imágenes y recursos externos a los orígenes necesarios.
 
 ## Tecnologías
 
@@ -41,7 +42,8 @@ La página presenta la empresa, sus especialidades, proyectos documentados, réc
 - CSS3, sin frameworks.
 - JavaScript nativo, sin dependencias externas.
 - Google Fonts:
-  - [Manrope](https://fonts.google.com/specimen/Manrope)
+  - [Barlow Condensed](https://fonts.google.com/specimen/Barlow+Condensed)
+  - [DM Sans](https://fonts.google.com/specimen/DM+Sans)
   - [DM Mono](https://fonts.google.com/specimen/DM+Mono)
 - Netlify para despliegue estático.
 
@@ -118,6 +120,8 @@ Para desplegar:
 6. Publica el sitio.
 
 También se puede arrastrar la carpeta del proyecto desde el panel de Netlify para realizar un despliegue manual.
+
+La configuración incluye encabezados de seguridad y una Content Security Policy compatible con las fuentes de Google Fonts. El lightbox utiliza una clase CSS para bloquear el scroll, por lo que no depende de estilos inline.
 
 ## Personalización
 
